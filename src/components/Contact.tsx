@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Mail, Phone, MapPin, Send, Linkedin, Github, MessageCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Instagram, Facebook, MessageCircle, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -124,19 +124,33 @@ const Contact = () => {
               <p className="text-sm text-muted-foreground mb-4">Follow me on</p>
               <div className="flex gap-3">
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/mubashir-khan-83b481243"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-all"
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/mubashirhayatkk?utm_source=qr&igsh=eG1rcm1kY2N2amhk"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-all"
                 >
-                  <Github className="w-5 h-5" />
+                  <Instagram className="w-5 h-5" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.facebook.com/profile.php?id=61585973291766"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-all"
+                >
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a
+                  href="https://wa.me/923198400943"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:border-primary hover:text-primary transition-all"
                 >
                   <MessageCircle className="w-5 h-5" />

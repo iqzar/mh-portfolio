@@ -14,6 +14,7 @@ const skills = [
   { name: "Git", level: 85, category: "Tools" },
   { name: "SQFLite", level: 80, category: "Database" },
   { name: "Apple Pay", level: 75, category: "Payments" },
+  { name: "Google Pay", level: 75, category: "Payments" },
   { name: "n8n", level: 85, category: "Automation" },
 ];
 

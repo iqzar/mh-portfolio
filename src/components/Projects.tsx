@@ -2,23 +2,70 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ExternalLink, Smartphone, CreditCard, MessageSquare, MapPin, Heart, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SiApple, SiGoogleplay } from "react-icons/si";
 
-const projects = [
+interface StoreLink {
+  type: "playStore" | "appStore";
+  url: string;
+}
+
+interface Project {
+  title: string;
+  description: string;
+  tags: string[];
+  icon: React.ReactNode;
+  color: string;
+  storeLinks?: StoreLink[];
+}
+
+const projects: Project[] = [
   {
-    title: "Emerald Beauty App",
+    title: "Emerald Beauty User App",
     description:
-      "Flutter-based Employee and User apps for a beauty services platform with Stripe and Apple Pay integration for secure payments.",
+      "Flutter-based User app for a beauty services platform with Stripe and Apple Pay integration for secure payments.",
     tags: ["Flutter", "Stripe", "Apple Pay", "API Integration"],
     icon: <Smartphone className="w-6 h-6" />,
     color: "from-emerald-500/20 to-teal-500/20",
+    storeLinks: [
+      { type: "playStore", url: "https://play.google.com/store/apps/details?id=com.emeraldbeauty.user&pcampaignid=web_share" },
+      { type: "appStore", url: "https://apps.apple.com/us/app/emerald-beauty-user-app/id6743151446" },
+    ],
   },
   {
-    title: "HelpDesk App",
+    title: "Emerald Beauty Employee App",
     description:
-      "User, Helper, and Admin Flutter apps for customer support with real-time calling using Daily.co SDK and ticket workflow management.",
-    tags: ["Flutter", "Daily.co SDK", "Real-time Calling", "Play Store"],
+      "Flutter-based Employee app for beauty service providers with scheduling, bookings management, and secure payments.",
+    tags: ["Flutter", "Stripe", "Apple Pay", "API Integration"],
+    icon: <Smartphone className="w-6 h-6" />,
+    color: "from-teal-500/20 to-emerald-500/20",
+    storeLinks: [
+      { type: "playStore", url: "https://play.google.com/store/apps/details?id=com.emeraldbeauty.employeefreelancer&pcampaignid=web_share" },
+      { type: "appStore", url: "https://apps.apple.com/us/app/emerald-beauty-employee-app/id6743151533" },
+    ],
+  },
+  {
+    title: "HelpDesk Helper",
+    description:
+      "Helper app for service providers with real-time calling using Daily.co SDK and ticket workflow management.",
+    tags: ["Flutter", "Daily.co SDK", "Real-time Calling"],
     icon: <MessageSquare className="w-6 h-6" />,
     color: "from-blue-500/20 to-cyan-500/20",
+    storeLinks: [
+      { type: "playStore", url: "https://play.google.com/store/apps/details?id=com.helpdesk.helper&pcampaignid=web_share" },
+      { type: "appStore", url: "https://apps.apple.com/us/app/helpdesk-helper/id6683304947" },
+    ],
+  },
+  {
+    title: "HelpDesk Instant Help",
+    description:
+      "User app for customer support with real-time calling using Daily.co SDK and seamless ticket management.",
+    tags: ["Flutter", "Daily.co SDK", "Real-time Calling"],
+    icon: <MessageSquare className="w-6 h-6" />,
+    color: "from-indigo-500/20 to-blue-500/20",
+    storeLinks: [
+      { type: "playStore", url: "https://play.google.com/store/apps/details?id=com.helpdesk.user&pcampaignid=web_share" },
+      { type: "appStore", url: "https://apps.apple.com/us/app/helpdesk-instant-help/id6660715086" },
+    ],
   },
   {
     title: "Time Management",
@@ -35,6 +82,9 @@ const projects = [
     tags: ["Flutter", "Firebase", "GetX", "Multi-language"],
     icon: <MapPin className="w-6 h-6" />,
     color: "from-violet-500/20 to-purple-500/20",
+    storeLinks: [
+      { type: "appStore", url: "https://apps.apple.com/us/app/qraftconnect/id6503102588" },
+    ],
   },
   {
     title: "Caretaker App",
@@ -103,7 +153,7 @@ const Projects = () => {
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
@@ -113,6 +163,32 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
+
+                {project.storeLinks && project.storeLinks.length > 0 && (
+                  <div className="flex gap-3 pt-2 border-t border-border">
+                    {project.storeLinks.map((link) => (
+                      <a
+                        key={link.type}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {link.type === "playStore" ? (
+                          <>
+                            <SiGoogleplay className="w-4 h-4" />
+                            <span>Play Store</span>
+                          </>
+                        ) : (
+                          <>
+                            <SiApple className="w-4 h-4" />
+                            <span>App Store</span>
+                          </>
+                        )}
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}
